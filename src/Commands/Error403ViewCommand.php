@@ -161,9 +161,9 @@ class Error403ViewCommand extends Command
      * @param  string  $path
      * @return void
      */
-    protected function runCommand($command, $path, OutputInterface $output)
+    protected function runCommand($command, array $arguments, OutputInterface $output)
     {
-        $process = (new Process($command, $path))->setTimeout(null);
+        $process = (new Process($command, $arguments))->setTimeout(null);
 
         if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
             $process->setTty(true);
